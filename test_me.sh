@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. $ROSELIB_PATH/common.sh
+. $ROSELIB_PATH/common.sh || echo "ERROR! Unable to load rose libraries!"
 
 if [ -n "$IS_LINUX" ]; then
   echo "IS LINUX"
