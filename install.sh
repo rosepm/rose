@@ -30,6 +30,7 @@ COLOR_DIE='\e[30m\033[41m' # Red background, black text
 # Installation manifests
 MANIFEST_LIB=(
 'common.sh'
+'output.sh'
 )
 
 MANIFEST_BIN=(

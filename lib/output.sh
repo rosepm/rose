@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Main rose interface
+# Output library
 #
 # Copyright (C) 2016  Sam Hart
 #
@@ -18,7 +16,32 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-. $ROSELIB_PATH/common.sh || echo "ERROR! Unable to load rose libraries (common)!"
-. $ROSELIB_PATH/output.sh || echo "ERROR! Unable to load rose libraries (output)!"
+# Shell color settings
+COLOR_RESET='\e[0m'
+COLOR_TRACE='\e[0;34m' # Blue
+COLOR_WARNING='\e[1;33m' # Yellow
+COLOR_ALERT='\e[4;31m' # Underline red
+COLOR_DIE='\e[30m\033[41m' # Red background, black text
 
-trace "Hello folks!"
+#######################
+# HELPER FUNCTIONS
+#######################
+
+# Trace functions
+warning () {
+  echo -e "${COLOR_WARNING}$*${COLOR_RESET}"
+}
+
+trace () {
+  echo -e "${COLOR_TRACE}$*${COLOR_RESET}"
+}
+
+alert() {
+  echo -e "${COLOR_ALERT}$*${COLOR_RESET}"
+}
+
+die() {
+  echo -e "${COLOR_DIE}$*${COLOR_RESET}"
+  exit 1
+}
+

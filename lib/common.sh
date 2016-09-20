@@ -14,6 +14,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+set -e
+
 # Misc. helpers
 
 unset IS_LINUX IS_BSD IS_SLES IS_SLACK IS_BSD IS_DEB IS_ARCH IS_RHEL || true
@@ -46,6 +48,11 @@ elif [ -f "/etc/slackware-version" ]; then
   IS_SLACK=yes
 fi
 
-exec_exists "pacman" && HAS_PAC=yes
-exec_exists "apt-get" && HAS_APT=yes
+if exec_exists "pacman"; then
+  HAS_PAC=yes
+fi
+
+if exec_exists "apt-get"; then
+  HAS_APT=yes
+fi
 
