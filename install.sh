@@ -91,18 +91,55 @@ _remove() {
   fi
 }
 
+install_rose() {
+  if [ -x "$LIBPATH/rose_install.sh" ]; then
+    trace "Previous rose install found, uninstalling..."
+    ./$LIBPATH/rose_install.sh --uninstall
+  fi
+
+  if [ ! -d "$BINPATH" ]; then
+    mkdir -p $BINPATH
+  fi
+
+  if [ ! -d "$LIBPATH" ]; then
+    mkdir -p $LIBPATH
+  fi
+
+  trace "Installing rose libraries..."
+  for fn in "${MANIFEST_LIB[@]}"
+  do
+    cp -a lib/$fn $LIBPATH/$fn || alert "Cannot copy '$fn', was installer run from repo directory?"
+  done
+
+  trace "Installing rose binaries..."
+  for fn in "${MANIFEST_BIN[@]}"
+  do
+    cp -a $fn $BINPATH/$fn || alert "Cannot copy '$fn', was installer run from repo directory?"
+  done
+  cp -a install.sh $LIBPATH/rose_install.sh || alert "Cannot copy installer,
+  was it run from repo directory?"
+
+  trace "Installation complete..."
+  trace "Please make sure that '$BINPATH' is in your \$PATH, and that \$ROSELIB_PATH"
+  trace "is set in your environment to '$LIBPATH'."
+}
+
 uninstall_rose() {
   trace "Removing rose libraries..."
   for fn in "${MANIFEST_LIB[@]}"
   do
-    _remove "$ROSELIB_PATH/$fn"
+    _remove "$LIBPATH/$fn"
   done
 
   trace "Removing rose binaries..."
   for fn in "${MANIFEST_BIN[@]}"
   do
-    _remove "$ROSELIB_PATH/$fn"
+    _remove "$BINPATH/$fn"
   done
+
+  if [ -x "$LIBPATH/rose_install.sh" ]; then
+    _remove "$LIBPATH/rose_install.sh"
+  fi
 }
 
 #########################
@@ -172,7 +209,7 @@ do
   esac
 done
 
-[ -n "$LIBPATH" ] || LIBPATH=~/lib
+[ -n "$LIBPATH" ] || LIBPATH=~/lib/rose
 [ -n "$BINPATH" ] || BINPATH=~/bin
 
 if [ -n "$UNINSTALL" ]; then
@@ -183,4 +220,6 @@ if [ -n "$UNINSTALL" ]; then
   trace "Done uninstalling"
   exit 0
 fi
+
+install_rose
 
