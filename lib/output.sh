@@ -28,7 +28,7 @@ COLOR_DIE='\e[30m\033[41m' # Red background, black text
 #######################
 
 # Trace functions
-warning () {
+warning() {
   echo -e "${COLOR_WARNING}$*${COLOR_RESET}"
 }
 

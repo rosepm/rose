@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Main rose interface
+# import library
 #
 # Copyright (C) 2016  Sam Hart
 #
@@ -18,9 +16,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-. $ROSELIB_PATH/import.sh
+. $ROSELIB_PATH/output.sh || echo "ERROR! Unable to load rose libraries (output)!"
 
-import "common.sh"
-import "output.sh"
-
-trace "Hello folks!"
+import() {
+  . $ROSELIB_PATH/$* || die "ERROR! Unable to load rose library '$*'!"
+}

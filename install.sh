@@ -31,6 +31,7 @@ COLOR_DIE='\e[30m\033[41m' # Red background, black text
 MANIFEST_LIB=(
 'common.sh'
 'output.sh'
+'import.sh'
 )
 
 MANIFEST_BIN=(
