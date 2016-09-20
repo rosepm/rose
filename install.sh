@@ -2,7 +2,7 @@
 
 # rose install tool
 
-unset LIBPATH BINPATH QUIET || true
+unset LIBPATH BINPATH QUIET UNINSTALL || true
 
 # Shell color settings
 COLOR_RESET='\e[0m'
@@ -66,6 +66,28 @@ die() {
   exit 1
 }
 
+# Installer functions
+_remove() {
+  if [ -f "$*" ]; then
+    unlink $*
+  else
+    warning "Unable to unlink '$*'"
+  fi
+}
+
+uninstall_rose() {
+  trace "Removing rose libraries..."
+  for fn in "${MANIFEST_LIB[@]}"
+  do
+    _remove "$fn"
+  done
+
+  trace "Removing rose binaries..."
+  for fn in "${MANIFEST_BIN[@]}"
+  do
+    _remove "$fn"
+  done
+}
 
 #########################
 # MAIN ENTRY POINT
@@ -84,6 +106,8 @@ usage()
   --lib=LIBPATH/        Installs the libraries to LIBPATH/
 
   --bin=BINPATH/        Installs the binary to BINPATH/
+
+  --uninstall           Uninstall rose
 
   --quiet               Install quietly (ignored if LOGFILE used)
 
@@ -113,6 +137,18 @@ do
       exit 0
       shift
       ;;
+    --quiet)
+      QUIET=yes
+      shift
+      ;;
+    --log=*)
+      LOG_FILE="${i#*]}"
+      shift
+      ;;
+    --uninstall)
+      UNINSTALL=yes
+      shift
+      ;;
     *)
       usage 0
       shift
@@ -122,4 +158,13 @@ done
 
 [ -n "$LIBPATH" ] || LIBPATH=~/lib
 [ -n "$BINPATH" ] || BINPATH=~/bin
+
+if [ -n "$UNINSTALL" ]; then
+  trace "Uninstalling rose..."
+  trace " "
+  uninstall_rose
+
+  trace "Done uninstalling"
+  exit 0
+fi
 
