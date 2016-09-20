@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Main rose interface
+
+. $ROSELIB_PATH/common.sh || echo "ERROR! Unable to load rose libraries!"

@@ -11,6 +11,19 @@ COLOR_WARNING='\e[1;33m' # Yellow
 COLOR_ALERT='\e[4;31m' # Underline red
 COLOR_DIE='\e[30m\033[41m' # Red background, black text
 
+# Installation manifests
+MANIFEST_LIB=(
+'common.sh'
+)
+
+MANIFEST_BIN=(
+'rose'
+)
+
+#######################
+# HELPER FUNCTIONS
+#######################
+
 # Trace functions
 inner_trace () {
   if [ -n "$LOG_FILE" ]; then
@@ -52,6 +65,11 @@ die() {
   fi
   exit 1
 }
+
+
+#########################
+# MAIN ENTRY POINT
+#########################
 
 PROGNAME=${0##*/}
 
@@ -102,4 +120,6 @@ do
   esac
 done
 
+[ -n "$LIBPATH" ] || LIBPATH=~/lib
+[ -n "$BINPATH" ] || BINPATH=~/bin
 
