@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Main rose interface
+# usage library
 #
 # Copyright (C) 2016  Sam Hart
 #
@@ -18,11 +16,21 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-. $ROSELIB_PATH/import.sh
+PROGNAME=${0##*/}
 
-import "common.sh"
-import "output.sh"
-import "usage.sh"
+usage()
+{
+  cat <<EOF
+  Usage: $PROGNAME [OPTIONS] COMMAND [PACKAGES]
 
-usage
+  Where COMMAND is one of the following:
+
+    init            Initialize rose's initial configuration file
+
+    search          Searches available packages
+
+    help            Print this help, or, if a command is provided, print that
+                    command's help.
+EOF
+}
 

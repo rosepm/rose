@@ -32,6 +32,7 @@ MANIFEST_LIB=(
 'common.sh'
 'output.sh'
 'import.sh'
+'usage.sh'
 )
 
 MANIFEST_BIN=(
@@ -149,8 +150,6 @@ uninstall_rose() {
 #########################
 
 PROGNAME=${0##*/}
-
-MY_CWD=`pwd`
 
 usage()
 {
