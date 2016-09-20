@@ -94,7 +94,7 @@ _remove() {
 install_rose() {
   if [ -x "$LIBPATH/rose_install.sh" ]; then
     trace "Previous rose install found, uninstalling..."
-    ./$LIBPATH/rose_install.sh --uninstall
+    bash $LIBPATH/rose_install.sh --uninstall
   fi
 
   if [ ! -d "$BINPATH" ]; then
@@ -204,6 +204,7 @@ do
       ;;
     *)
       usage 0
+      exit 1
       shift
       ;;
   esac
