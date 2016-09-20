@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. lib/common.sh
+. $ROSELIB_PATH/common.sh
 
 if [ -n "$IS_LINUX" ]; then
   echo "IS LINUX"
