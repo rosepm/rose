@@ -102,11 +102,18 @@ _process_arch() {
   cat << EOF >> $CONF_FILE
 # Arch Linux settings
 #--------------------
+
+unset USE_PAC || true
+
 EOF
   if [ -n "$HAS_PAC" ]; then
     local _pacman=$(which pacman)
     cat << EOF >> $CONF_FILE
 PACMAN_EXEC="$_pacman"
+
+# Comment if you do not wish to use pacman
+USE_PAC=yes
+
 EOF
   fi
   echo " " >> $CONF_FILE

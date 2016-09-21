@@ -31,8 +31,11 @@ usage_full()
 
     search          Searches available packages
 
+    show            Show information about an installed package
+
     help            Print this help, or, if a command is provided, print that
                     command's help.
+
 EOF
 }
 
@@ -55,6 +58,21 @@ usage_init()
       will give you a skeleton that is ready for you to modify.
     * Init will fail if a configuration is already found. Use '-f' to force
       a reinitialize.
+
+EOF
+}
+
+usage_show()
+{
+  cat <<EOF
+  Usage: $PROGNAME [OPTIONS] show PACKAGE(S)
+
+    Show information about a package or packages.
+
+  OPTIONS:
+
+    -i              Show more information about a package.
+
 EOF
 }
 
@@ -65,6 +83,11 @@ usage() {
   local _no_command=0
   if [ -n "$CMD_INIT" ]; then
     usage_init
+    _no_command=1
+  fi
+
+  if [ -n "$CMD_SHOW" ]; then
+    usage_show
     _no_command=1
   fi
 

@@ -37,3 +37,8 @@ mkdir_conf_path() {
   debug "Making configuraion path '$ROSECONF_PATH'"
   mkdir -p $ROSECONF_PATH
 }
+
+load_config() {
+  set_config_file
+  . $CONF_FILE || die "Errot parsing configuration file!"
+}
