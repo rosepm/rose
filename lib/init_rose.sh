@@ -32,6 +32,57 @@ _print_header() {
 EOF
 }
 
+_print_info() {
+  cat << EOF >> $CONF_FILE
+# The following information has been discovered:
+#
+EOF
+  local _toggles=()
+
+  if [ -n "$IS_LINUX" ]; then
+    _toggles+=('IS_LINUX')
+  elif [ -n "$IS_BSD" ]; then
+    _toggles+=('IS_BSD')
+  fi
+
+  if [ -n "$IS_SLES" ]; then
+    _toggles+=('IS_SLES')
+  elif [ -n "$IS_SLACK" ]; then
+    _toggles+=('IS_SLACK')
+  elif [ -n "$IS_DEB" ]; then
+    _toggles+=('IS_DEB')
+  elif [ -n "$IS_ARCH" ]; then
+    _toggles+=('IS_ARCH')
+  elif [ -n "$IS_RHEL" ]; then
+    _toggles+=('IS_RHEL')
+  fi
+
+  if [ -n "$HAS_PAC" ]; then
+    _toggles+=('HAS_PAC')
+  fi
+
+  if [ -n "$HAS_APT" ]; then
+    _toggles+=('HAS_APT')
+  fi
+
+  if [ -n "$HAS_APTITUDE" ]; then
+    _toggles+=('HAS_APTITUDE')
+  fi
+
+  if [ -n "$HAS_DNF" ]; then
+    _toggles+=('HAS_DNF')
+  fi
+
+  if [ -n "$HAS_BREW" ]; then
+    _toggles+=('HAS_BREW')
+  fi
+
+  while $(echo "$_toggles" | fold -w 70 -) line
+  do
+    echo "# $line" >> $CONF_FILE
+  done
+}
+
 ########################
 # MAIN ENTRY POINT
 ########################
@@ -59,4 +110,6 @@ init_rose() {
   debug "Printing header..."
   _print_header
 
+  debug "Printing info..."
+  _print_info
 }
