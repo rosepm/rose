@@ -1,4 +1,4 @@
-# Rose
+# Rose :rose:
 
 I hate package managers.
 
