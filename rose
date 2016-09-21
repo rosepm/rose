@@ -55,8 +55,15 @@ if has_option "-k"; then
   trace "YO YO YO BITCHES"
 fi
 
+_command_found=1
+
 if [ -n "$CMD_HELP" ]; then
   usage
+  _command_found=0
   exit 0
 fi
 
+if [ $_command_found -eq 1 ]; then
+  usage
+  exit 1
+fi
