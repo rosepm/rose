@@ -20,5 +20,18 @@ import "common.sh"
 import "output.sh"
 import "config.sh"
 
+# Internal functions
+_pacman() {
+  if [ -n "$USE_SUDO" ]; then
+    sudo pacman $*
+  else
+    pacman $*
+  fi
+}
+
 pm_show() {
+  for i in "${PARAMETERS[@]}"
+  do
+    _pacman "-Q $i"
+  done
 }

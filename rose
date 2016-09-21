@@ -24,7 +24,7 @@ import "common.sh"
 import "output.sh"
 import "usage.sh"
 import "init_rose.sh"
-import "sub_loader.sh"
+import "dispatcher.sh"
 
 for i in "$@"
 do
