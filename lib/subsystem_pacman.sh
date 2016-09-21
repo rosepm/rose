@@ -29,6 +29,9 @@ _pacman() {
   fi
 }
 
+##########################
+# MAIN INTERFACES
+##########################
 pm_show() {
   local _p="-Q"
   if has_option "-i"; then
