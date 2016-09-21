@@ -34,6 +34,7 @@ MANIFEST_LIB=(
 'import.sh'
 'usage.sh'
 'init_rose.sh'
+'config.sh'
 )
 
 MANIFEST_BIN=(

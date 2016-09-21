@@ -1,4 +1,4 @@
-# rose initialization system
+# main configuration handling
 #
 # Copyright (C) 2016  Sam Hart
 #
@@ -18,15 +18,15 @@
 
 import "common.sh"
 import "output.sh"
-import "config.sh"
 
-########################
-# MAIN ENTRY POINT
-########################
-init_rose() {
-  # -v verbose
-  # -f force
-  # PATHS may have install path
-  set_config_file
-  echo "$CONF_FILE"
+# Set the config file, if parameter is passed, use that as path
+set_config_file() {
+  CONF_FILE=~/.roserc
+  if [ $# -eq 0 ]; then
+    if [ -n "$ROSECONF_PATH" ]; then
+      CONF_FILE=$ROSECONF_PATH/.roserc
+    fi
+  else
+    CONF_FILE=$*/.roserc
+  fi
 }

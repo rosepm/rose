@@ -16,6 +16,10 @@ import "usage.sh"
 import "usage.sh"
 import "usage.sh"
 
+if [ -n "$ROSECONF_PATH" ]; then
+  echo "Got a path for conf!"
+fi
+
 if [ -n "$IS_LINUX" ]; then
   echo "IS LINUX"
 fi
