@@ -32,6 +32,13 @@ _already_imported() {
   return $_found
 }
 
+dump_imports() {
+  for i in "${IMPORTS[@]}"
+  do
+    echo "$i"
+  done
+}
+
 import() {
   # We only need to import things once due to bash's globals
   if ! _already_imported "$*"; then
