@@ -37,50 +37,79 @@ _print_info() {
 # The following information has been discovered:
 #
 EOF
-  local _toggles=()
+  local _toggles
 
   if [ -n "$IS_LINUX" ]; then
-    _toggles+=('IS_LINUX')
+    _toggles+='IS_LINUX '
   elif [ -n "$IS_BSD" ]; then
-    _toggles+=('IS_BSD')
+    _toggles+='IS_BSD '
   fi
 
   if [ -n "$IS_SLES" ]; then
-    _toggles+=('IS_SLES')
+    _toggles+='IS_SLES '
   elif [ -n "$IS_SLACK" ]; then
-    _toggles+=('IS_SLACK')
+    _toggles+='IS_SLACK '
   elif [ -n "$IS_DEB" ]; then
-    _toggles+=('IS_DEB')
+    _toggles+='IS_DEB '
   elif [ -n "$IS_ARCH" ]; then
-    _toggles+=('IS_ARCH')
+    _toggles+='IS_ARCH '
   elif [ -n "$IS_RHEL" ]; then
-    _toggles+=('IS_RHEL')
+    _toggles+='IS_RHEL '
   fi
 
   if [ -n "$HAS_PAC" ]; then
-    _toggles+=('HAS_PAC')
+    _toggles+='HAS_PAC '
   fi
 
   if [ -n "$HAS_APT" ]; then
-    _toggles+=('HAS_APT')
+    _toggles+='HAS_APT '
   fi
 
   if [ -n "$HAS_APTITUDE" ]; then
-    _toggles+=('HAS_APTITUDE')
+    _toggles+='HAS_APTITUDE '
   fi
 
   if [ -n "$HAS_DNF" ]; then
-    _toggles+=('HAS_DNF')
+    _toggles+='HAS_DNF '
   fi
 
   if [ -n "$HAS_BREW" ]; then
-    _toggles+=('HAS_BREW')
+    _toggles+='HAS_BREW '
   fi
 
-  for i in `echo -e "${_toggles[@]}" | fold -w 70 -`;
-  do
-    echo "# $i" >> $CONF_FILE
-  done
+  cat << EOF >> $CONF_FILE
+# $_toggles
+#
+
+EOF
+}
+
+_print_universal() {
+  cat << EOF >> $CONF_FILE
+# Universal options
+#------------------
+
+unset USE_SUDO || true
+
+# Uncomment to enable sudo before commands
+# USE_SUDO=yes
+
+EOF
+}
+
+_process_arch() {
+  debug "Processing Arch Linux section..."
+  cat << EOF >> $CONF_FILE
+# Arch Linux settings
+#--------------------
+EOF
+  if [ -n "$HAS_PAC" ]; then
+    local _pacman=$(which pacman)
+    cat << EOF >> $CONF_FILE
+PACMAN_EXEC="$_pacman"
+EOF
+  fi
+  echo " " >> $CONF_FILE
 }
 
 ########################
@@ -112,4 +141,11 @@ init_rose() {
 
   debug "Printing info..."
   _print_info
+
+  debug "Processing universal options..."
+  _print_universal
+
+  if [ -n "$IS_ARCH" ]; then
+    _process_arch
+  fi
 }
