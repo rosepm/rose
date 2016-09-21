@@ -50,6 +50,7 @@ do
   esac
 done
 
+# FIXME: delete the following, was only a test
 if has_option "-k"; then
   trace "YO YO YO BITCHES"
 fi
