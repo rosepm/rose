@@ -35,6 +35,10 @@ do
       CMD_HELP=yes
       shift
       ;;
+    -p=*)
+      PATHS+=("${i#*=}")
+      shift
+      ;;
     -*)
       OPTIONS+=("${i#*=}")
       shift

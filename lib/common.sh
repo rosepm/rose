@@ -28,6 +28,7 @@ unset CMD_HELP CMD_INIT || true
 # Parameters and options
 PARAMETERS=()
 OPTIONS=()
+PATHS=()
 
 # Determines if an executable exists and is on path
 exec_exists() {

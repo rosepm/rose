@@ -40,6 +40,21 @@ usage_init()
 {
   cat <<EOF
   Usage: $PROGNAME [OPTIONS] init
+
+    Create rose's initial configuration.
+
+  OPTIONS:
+
+    -v              Be verbose
+    -f              Force a re-init
+    -p=PATH         Use PATH as the location for rose's configuration file
+
+  NOTES:
+
+    * This will probably not leave your rose install in a useable state. It
+      will give you a skeleton that is ready for you to modify.
+    * Init will fail if a configuration is already found. Use '-f' to force
+      a reinitialize.
 EOF
 }
 
