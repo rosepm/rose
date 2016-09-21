@@ -23,12 +23,13 @@ import "config.sh"
 # Internal functions
 _pacman() {
   if [ -n "$PACMAN_EXEC" ]; then
-
     if [ -n "$USE_SUDO" ]; then
       sudo $PACMAN_EXEC $*
     else
       $PACMAN_EXEC $*
     fi
+  else
+    die "No pacman executable set, is \$PACMAN_EXEC set in the config file?"
   fi
 }
 
