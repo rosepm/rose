@@ -37,8 +37,12 @@ pm_show() {
   if has_option "-i"; then
     _p="${_p}i"
   fi
-  for i in "${PARAMETERS[@]}"
-  do
-    _pacman "$_p $i"
-  done
+  if [ "${#PARAMETERS[@]}" -eq 0 ]; then
+    _pacman "$_p"
+  else
+    for i in "${PARAMETERS[@]}"
+    do
+      _pacman "$_p $i"
+    done
+  fi
 }
