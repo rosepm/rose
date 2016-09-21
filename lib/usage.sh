@@ -18,7 +18,7 @@
 
 PROGNAME=${0##*/}
 
-usage()
+usage_full()
 {
   cat <<EOF
   Usage: $PROGNAME [OPTIONS] COMMAND [PACKAGES]
@@ -34,3 +34,21 @@ usage()
 EOF
 }
 
+usage_init()
+{
+  cat <<EOF
+  Usage: $PROGNAME [OPTIONS] init
+EOF
+}
+
+usage() {
+  _no_command=0
+  if [ -n "$CMD_INIT" ]; then
+    usage_init
+    _no_command=1
+  fi
+
+  if [ $_no_command -eq 0 ]; then
+    usage_full
+  fi
+}
