@@ -22,10 +22,13 @@ import "config.sh"
 
 # Internal functions
 _pacman() {
-  if [ -n "$USE_SUDO" ]; then
-    sudo pacman $*
-  else
-    pacman $*
+  if [ -n "$PACMAN_EXEC" ]; then
+
+    if [ -n "$USE_SUDO" ]; then
+      sudo $PACMAN_EXEC $*
+    else
+      $PACMAN_EXEC $*
+    fi
   fi
 }
 
