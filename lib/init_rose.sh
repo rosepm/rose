@@ -77,9 +77,9 @@ EOF
     _toggles+=('HAS_BREW')
   fi
 
-  while $(echo "$_toggles" | fold -w 70 -) line
+  for i in `echo -e "${_toggles[@]}" | fold -w 70 -`;
   do
-    echo "# $line" >> $CONF_FILE
+    echo "# $i" >> $CONF_FILE
   done
 }
 
