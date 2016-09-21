@@ -19,6 +19,7 @@
 IMPORTS=()
 
 . $ROSELIB_PATH/output.sh || echo "ERROR! Unable to load rose libraries (output)!"
+IMPORTS+=("output.sh")
 
 _already_imported() {
   local _found=1
