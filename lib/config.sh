@@ -25,8 +25,15 @@ set_config_file() {
   if [ $# -eq 0 ]; then
     if [ -n "$ROSECONF_PATH" ]; then
       CONF_FILE=$ROSECONF_PATH/.roserc
+    else
+      ROSECONF_PATH=~/
     fi
   else
     CONF_FILE=$*/.roserc
   fi
+}
+
+mkdir_conf_path() {
+  debug "Making configuraion path '$ROSECONF_PATH'"
+  mkdir -p $ROSECONF_PATH
 }

@@ -47,6 +47,6 @@ die() {
 
 debug() {
   if [ -n "$VERBOSE" ]; then
-    echo -e "${COLOR_TRACE}$*${COLOR_RESET}"
+    echo -e "${COLOR_WARNING}DEBUG: ${COLOR_TRACE}$*${COLOR_RESET}"
   fi
 }
