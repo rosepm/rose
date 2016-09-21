@@ -71,6 +71,7 @@ elif [ -n "$CMD_INIT" ]; then
   init_rose
   _command_found=0
 elif [ -n "$PM_CMD" ]; then
+  dispatcher
   _command_found=0
 fi
 

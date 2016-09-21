@@ -1,4 +1,4 @@
-# the command dispatcher
+# pacman subsystem
 #
 # Copyright (C) 2016  Sam Hart
 #
@@ -20,17 +20,5 @@ import "common.sh"
 import "output.sh"
 import "config.sh"
 
-load_subsystem() {
-  if [ -n "$USE_PAC" ] && [ -n "$HAS_PAC" ]; then
-    import "subsystem_pacman.sh"
-  fi
-}
-
-dispatcher() {
-  load_config
-  load_subsystem
-
-  if [ -n "$CMD_SHOW" ]; then
-    pm_show
-  fi
+pm_show() {
 }

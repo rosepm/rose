@@ -35,7 +35,7 @@ MANIFEST_LIB=(
 'usage.sh'
 'init_rose.sh'
 'config.sh'
-'sub_loader.sh'
+'dispatcher.sh'
 'subsystem_pacman.sh'
 )
 
