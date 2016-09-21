@@ -73,6 +73,10 @@ usage_show()
 
     -i              Show more information about a package.
 
+  NOTES:
+
+    * If no packages are listed, will show all installed packages.
+
 EOF
 }
 
