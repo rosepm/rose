@@ -36,6 +36,10 @@ do
       CMD_HELP=yes
       shift
       ;;
+    -v|--verbose)
+      VERBOSE=yes
+      shift
+      ;;
     -p=*)
       PATHS+=("${i#*=}")
       shift

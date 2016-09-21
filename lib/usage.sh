@@ -58,6 +58,9 @@ usage_init()
 EOF
 }
 
+############################
+# MAIN ENTRY POINT
+############################
 usage() {
   local _no_command=0
   if [ -n "$CMD_INIT" ]; then

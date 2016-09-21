@@ -23,5 +23,8 @@ import "output.sh"
 # MAIN ENTRY POINT
 ########################
 init_rose() {
+  # -v verbose
+  # -f force
+  # PATHS may have install path
   echo
 }

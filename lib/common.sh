@@ -25,6 +25,9 @@ unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW || true
 # Command toggles
 unset CMD_HELP CMD_INIT || true
 
+# Other toggles
+unset VERBOSE || true
+
 # Parameters and options
 PARAMETERS=()
 OPTIONS=()
