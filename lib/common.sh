@@ -21,6 +21,9 @@ set -e
 unset IS_LINUX IS_BSD IS_SLES IS_SLACK IS_BSD IS_DEB IS_ARCH IS_RHEL || true
 unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW || true
 
+PARAMETERS=()
+OPTIONS=()
+
 # Determines if an executable exists and is on path
 exec_exists() {
   hash $* 2>/dev/null

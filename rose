@@ -24,5 +24,44 @@ import "common.sh"
 import "output.sh"
 import "usage.sh"
 
-usage
+unset CMD_HELP CMD_INIT || true
+
+for i in "$@"
+do
+  case $i in
+    init)
+      CMD_INIT=yes
+      shift
+      ;;
+    help)
+      CMD_HELP=yes
+      shift
+      ;;
+    -*)
+      OPTIONS+=("${i#*=}")
+      shift
+      ;;
+    *)
+      PARAMETERS+=("${i#*=}")
+      shift
+      ;;
+  esac
+done
+
+warning "PARAMETERS"
+for i in "${PARAMETERS[@]}"
+do
+  trace "$i"
+done
+
+warning "OPTIONS"
+for i in "${OPTIONS[@]}"
+do
+  trace "$i"
+done
+
+if [ -n "$CMD_HELP" ]; then
+  usage
+  exit 0
+fi
 
