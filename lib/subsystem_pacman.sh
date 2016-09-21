@@ -30,8 +30,12 @@ _pacman() {
 }
 
 pm_show() {
+  local _p="-Q"
+  if has_option "-i"; then
+    _p="${_p}i"
+  fi
   for i in "${PARAMETERS[@]}"
   do
-    _pacman "-Q $i"
+    _pacman "$_p $i"
   done
 }
