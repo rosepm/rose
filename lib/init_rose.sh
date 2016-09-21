@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Main rose interface
+# rose initialization system
 #
 # Copyright (C) 2016  Sam Hart
 #
@@ -18,56 +16,12 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-. $ROSELIB_PATH/import.sh
-
 import "common.sh"
 import "output.sh"
-import "usage.sh"
-import "init_rose.sh"
 
-for i in "$@"
-do
-  case $i in
-    init)
-      CMD_INIT=yes
-      shift
-      ;;
-    help)
-      CMD_HELP=yes
-      shift
-      ;;
-    -p=*)
-      PATHS+=("${i#*=}")
-      shift
-      ;;
-    -*)
-      OPTIONS+=("${i#*=}")
-      shift
-      ;;
-    *)
-      PARAMETERS+=("${i#*=}")
-      shift
-      ;;
-  esac
-done
-
-# FIXME: delete the following, was only a test
-if has_option "-k"; then
-  trace "YO YO YO BITCHES"
-fi
-
-_command_found=1
-
-if [ -n "$CMD_HELP" ]; then
-  usage
-  _command_found=0
-  exit 0
-elif [ -n "$CMD_INIT" ]; then
-  init_rose
-  _command_found=0
-fi
-
-if [ $_command_found -eq 1 ]; then
-  usage
-  exit 1
-fi
+########################
+# MAIN ENTRY POINT
+########################
+init_rose() {
+  echo
+}
