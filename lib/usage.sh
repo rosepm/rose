@@ -42,7 +42,7 @@ EOF
 }
 
 usage() {
-  _no_command=0
+  local _no_command=0
   if [ -n "$CMD_INIT" ]; then
     usage_init
     _no_command=1

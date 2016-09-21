@@ -16,8 +16,25 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+IMPORTS=()
+
 . $ROSELIB_PATH/output.sh || echo "ERROR! Unable to load rose libraries (output)!"
 
+_already_imported() {
+  local _found=1
+  for i in "${IMPORTS[@]}"
+  do
+    if [[ "$*" == $i ]]; then
+      _found=0
+    fi
+  done
+  return $_found
+}
+
 import() {
-  . $ROSELIB_PATH/$* || die "ERROR! Unable to load rose library '$*'!"
+  # We only need to import things once due to bash's globals
+  if ! _already_imported "$*"; then
+    . $ROSELIB_PATH/$* || die "ERROR! Unable to load rose library '$*'!"
+    IMPORTS+=("$*")
+  fi
 }

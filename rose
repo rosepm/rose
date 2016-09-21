@@ -24,8 +24,6 @@ import "common.sh"
 import "output.sh"
 import "usage.sh"
 
-unset CMD_HELP CMD_INIT || true
-
 for i in "$@"
 do
   case $i in

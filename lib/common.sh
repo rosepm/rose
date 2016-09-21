@@ -18,9 +18,14 @@ set -e
 
 # Misc. helpers
 
+# Various OS and tool toggles
 unset IS_LINUX IS_BSD IS_SLES IS_SLACK IS_BSD IS_DEB IS_ARCH IS_RHEL || true
 unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW || true
 
+# Command toggles
+unset CMD_HELP CMD_INIT || true
+
+# Parameters and options
 PARAMETERS=()
 OPTIONS=()
 
@@ -31,7 +36,7 @@ exec_exists() {
 
 # Determine our OS, its flavor, and what package managers we have
 if exec_exists "uname"; then
-  _uname=`uname`
+  local _uname=`uname`
   if [[ "$_uname" == 'Linux' ]]; then
     IS_LINUX=yes
   elif [[ "$_uname" == 'FreeBSD' ]]; then
@@ -68,7 +73,7 @@ has_option() {
   # Okay, so, associative arrays would have been lovely here, but fuck if I
   # couldn't get it to work right. So, I went with this, which is ugly but
   # works
-  _found=1
+  local _found=1
   for i in "${OPTIONS[@]}"
   do
     if [[ "$*" == $i ]]; then
