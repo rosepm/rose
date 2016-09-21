@@ -18,6 +18,8 @@ set -e
 
 # Misc. helpers
 
+VERSION=20160921
+
 # Various OS and tool toggles
 unset IS_LINUX IS_BSD IS_SLES IS_SLACK IS_BSD IS_DEB IS_ARCH IS_RHEL || true
 unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW || true

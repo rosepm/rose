@@ -20,6 +20,18 @@ import "common.sh"
 import "output.sh"
 import "config.sh"
 
+_print_header() {
+  local d=$(date)
+  cat << EOF > $CONF_FILE
+# rose version $VERSION, file created '$d'
+#
+# This is the configuration file for rose. This file has been auto-
+# generated. You should edit it to suit your needs.
+#-----------------------------------------------------------------------
+
+EOF
+}
+
 ########################
 # MAIN ENTRY POINT
 ########################
@@ -29,4 +41,22 @@ init_rose() {
   # PATHS may have install path
   set_config_file
   mkdir_conf_path
+
+  if [ -f "$CONF_FILE" ]; then
+    debug "Existing configuration file found!"
+    if has_option "-f"; then
+      local _tstamp=$(date "+%Y%m%d-%H%M%S")
+      mv $CONF_FILE $CONF_FILE.$_tstamp
+    else
+      alert "Existing configuration file found, '$CONF_FILE'."
+      die "Use '-f' to force overwriting configuration file..."
+    fi
+  fi
+
+  debug "Creating configuration file '$CONF_FILE'..."
+  touch $CONF_FILE
+
+  debug "Printing header..."
+  _print_header
+
 }
