@@ -59,3 +59,21 @@ if exec_exists "apt-get"; then
   HAS_APT=yes
 fi
 
+##############################
+# Common utility functions
+##############################
+
+# check if an option is in the options
+has_option() {
+  # Okay, so, associative arrays would have been lovely here, but fuck if I
+  # couldn't get it to work right. So, I went with this, which is ugly but
+  # works
+  _found=1
+  for i in "${OPTIONS[@]}"
+  do
+    if [[ "$*" == $i ]]; then
+      _found=0
+    fi
+  done
+  return $_found
+}

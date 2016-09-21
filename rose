@@ -48,17 +48,9 @@ do
   esac
 done
 
-warning "PARAMETERS"
-for i in "${PARAMETERS[@]}"
-do
-  trace "$i"
-done
-
-warning "OPTIONS"
-for i in "${OPTIONS[@]}"
-do
-  trace "$i"
-done
+if has_option "-k"; then
+  trace "YO YO YO BITCHES"
+fi
 
 if [ -n "$CMD_HELP" ]; then
   usage
