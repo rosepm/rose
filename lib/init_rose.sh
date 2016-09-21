@@ -28,5 +28,5 @@ init_rose() {
   # -f force
   # PATHS may have install path
   set_config_file
-  echo "$CONF_FILE"
+  mkdir_conf_path
 }
