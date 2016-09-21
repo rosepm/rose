@@ -32,7 +32,7 @@ warning() {
   echo -e "${COLOR_WARNING}$*${COLOR_RESET}"
 }
 
-trace () {
+trace() {
   echo -e "${COLOR_TRACE}$*${COLOR_RESET}"
 }
 
@@ -45,3 +45,8 @@ die() {
   exit 1
 }
 
+debug() {
+  if [ -n "$VERBOSE" ]; then
+    echo -e "${COLOR_TRACE}$*${COLOR_RESET}"
+  fi
+}
