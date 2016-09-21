@@ -24,6 +24,7 @@ import "common.sh"
 import "output.sh"
 import "usage.sh"
 import "init_rose.sh"
+import "sub_loader.sh"
 
 for i in "$@"
 do
@@ -38,6 +39,7 @@ do
       ;;
     show)
       CMD_SHOW=yes
+      PM_CMD=yes
       shift
       ;;
     -v|--verbose)
@@ -68,7 +70,7 @@ if [ -n "$CMD_HELP" ]; then
 elif [ -n "$CMD_INIT" ]; then
   init_rose
   _command_found=0
-elif [ -n "$CMD_SHOW" ]; then
+elif [ -n "$PM_CMD" ]; then
   _command_found=0
 fi
 

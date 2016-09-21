@@ -24,4 +24,8 @@ load_subsystem() {
   local _cmd="$*"
 
   load_config
+
+  if [ -n "$USE_PAC" ] && [ -n "$HAS_PAC" ]; then
+    import "subsystem_pacman.sh"
+  fi
 }

@@ -28,7 +28,7 @@ unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW || true
 unset CMD_HELP CMD_INIT CMD_SHOW || true
 
 # Other toggles and settings
-unset VERBOSE CONF_FILE || true
+unset VERBOSE CONF_FILE PM_CMD || true
 
 # Parameters and options
 PARAMETERS=()
