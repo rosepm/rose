@@ -196,7 +196,7 @@ do
       shift
       ;;
     --log=*)
-      LOG_FILE="${i#*]}"
+      LOG_FILE="${i#*=}"
       shift
       ;;
     --uninstall)
