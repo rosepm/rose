@@ -5,4 +5,4 @@
 
 Command | pacman | apt | aptitude | brew | dnf
 --------|--------|-----|----------|------|-----
-show    | :o:    | :x: | :x:      | :x:  | :x:
+show    | :o:    | :x: | :x:      | :o:  | :x:
