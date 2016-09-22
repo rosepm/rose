@@ -44,7 +44,7 @@ EOF
   elif [ -n "$IS_BSD" ]; then
     _toggles+='IS_BSD '
   elif [ -n "$IS_DAR" ]; then
-    _toggles+='IS_DAR'
+    _toggles+='IS_DAR '
   fi
 
   if [ -n "$IS_SLES" ]; then
