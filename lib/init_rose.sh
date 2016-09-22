@@ -43,6 +43,8 @@ EOF
     _toggles+='IS_LINUX '
   elif [ -n "$IS_BSD" ]; then
     _toggles+='IS_BSD '
+  elif [ -n "$IS_DAR" ]; then
+    _toggles+='IS_DAR'
   fi
 
   if [ -n "$IS_SLES" ]; then
@@ -119,6 +121,25 @@ EOF
   echo " " >> $CONF_FILE
 }
 
+_process_brew() {
+  debug "Processing Homebrew section..."
+  cat << EOF >> $CONF_FILE
+# Homebrew settings
+#------------------
+
+unset USE_BREW || true
+
+EOF
+  local _brew=$(which brew)
+  cat << EOF >> $CONF_FILE
+BREW_EXEC="$_brew"
+
+# Comment if you do not wish to use brew
+USE_BREW=yes
+
+EOF
+}
+
 ########################
 # MAIN ENTRY POINT
 ########################
@@ -154,5 +175,9 @@ init_rose() {
 
   if [ -n "$IS_ARCH" ]; then
     _process_arch
+  elif [ -n "$IS_DAR" ]; then
+    if [ -n "$HAS_BREW" ]; then
+      _process_brew
+    fi
   fi
 }

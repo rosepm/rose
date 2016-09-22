@@ -22,7 +22,7 @@ VERSION=20160921
 
 # Various OS and tool toggles
 unset IS_LINUX IS_BSD IS_SLES IS_SLACK IS_BSD IS_DEB IS_ARCH IS_RHEL || true
-unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW || true
+unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW IS_DAR || true
 
 # Command toggles
 unset CMD_HELP CMD_INIT CMD_SHOW || true
@@ -47,6 +47,8 @@ if exec_exists "uname"; then
     IS_LINUX=yes
   elif [[ "$_uname" == 'FreeBSD' ]]; then
     IS_BSD=yes
+  elif [[ "$_uname" == 'Darwin' ]]; then
+    IS_DAR=yes
   fi
 fi
 
@@ -68,6 +70,10 @@ fi
 
 if exec_exists "apt-get"; then
   HAS_APT=yes
+fi
+
+if exec_exists "brew"; then
+  HAS_BREW=yes
 fi
 
 ##############################
