@@ -23,6 +23,8 @@ import "config.sh"
 load_subsystem() {
   if [ -n "$USE_PAC" ] && [ -n "$HAS_PAC" ]; then
     import "subsystem_pacman.sh"
+  elif [ -n "$USE_BREW" ] && [ -n "$HAS_BREW" ]; then
+    import "subsystem_brew.sh"
   else
     die "Unable to load any subsystem, is your OS/package-manager supported?"
   fi

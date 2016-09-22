@@ -37,6 +37,7 @@ MANIFEST_LIB=(
 'config.sh'
 'dispatcher.sh'
 'subsystem_pacman.sh'
+'subsystem_brew.sh'
 )
 
 MANIFEST_BIN=(
