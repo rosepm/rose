@@ -21,11 +21,11 @@
 unset LIBPATH BINPATH QUIET UNINSTALL || true
 
 # Shell color settings
-COLOR_RESET='\e[0m'
-COLOR_TRACE='\e[0;34m' # Blue
-COLOR_WARNING='\e[1;33m' # Yellow
-COLOR_ALERT='\e[4;31m' # Underline red
-COLOR_DIE='\e[30m\033[41m' # Red background, black text
+COLOR_RESET='\033[0m'
+COLOR_TRACE='\033[0;34m' # Blue
+COLOR_WARNING='\033[1;33m' # Yellow
+COLOR_ALERT='\033[4;31m' # Underline red
+COLOR_DIE='\033[30m\033[41m' # Red background, black text
 
 # Installation manifests
 MANIFEST_LIB=(
