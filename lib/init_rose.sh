@@ -140,6 +140,50 @@ USE_BREW=yes
 EOF
 }
 
+_process_apt() {
+  debug "Processing apt section..."
+  cat << EOF >> $CONF_FILE
+# Apt settings
+#-------------
+
+unset USE_APT || true
+
+EOF
+  local _apt=$(which apt)
+  local _apt_get=$(which apt-get)
+  local _apt_cache=$(which apt-cache)
+  cat << EOF >> $CONF_FILE
+APT_EXEC="$_apt"
+APT_GET_EXEC="$_apt_get"
+APT_CACHE_EXEC="$_apt_cache"
+
+# Comment if you do not wish to use apt
+USE_APT=yes
+
+EOF
+}
+
+_process_aptitude() {
+  debug "Processing aptitude section..."
+  cat << EOF >> $CONF_FILE
+# Aptitude settings
+#------------------
+# NOTE: By default aptitude will be disabled! If you wish to use aptitude, you
+# will want to disable apt first and then enable aptitude here!
+
+unset USE_APTITUDE || true
+
+EOF
+  local _aptitude=$(which aptitude)
+  cat << EOF >> $CONF_FILE
+APTITUDE_EXEC="$_aptitude"
+
+# Uncomment if you wish to use aptitude (see NOTE above!)
+# USE_APTITUDE=yes
+
+EOF
+}
+
 ########################
 # MAIN ENTRY POINT
 ########################
@@ -178,6 +222,13 @@ init_rose() {
   elif [ -n "$IS_DAR" ]; then
     if [ -n "$HAS_BREW" ]; then
       _process_brew
+    fi
+  elif [ -n "$IS_DEB" ]; then
+    if [ -n "$HAS_APT" ]; then
+      _process_apt
+    fi
+    if [ -n "$HAS_APTITUDE" ]; then
+      _process_aptitude
     fi
   fi
 }

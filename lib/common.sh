@@ -68,8 +68,12 @@ if exec_exists "pacman"; then
   HAS_PAC=yes
 fi
 
-if exec_exists "apt-get"; then
+if exec_exists "apt"; then
   HAS_APT=yes
+fi
+
+if exec_exists "aptitude"; then
+  HAS_APTITUDE=yes
 fi
 
 if exec_exists "brew"; then
