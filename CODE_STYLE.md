@@ -5,9 +5,11 @@ Rose adheres to the following coding style:
 * Indentation is 2-space.
 * Functions should be of the form:
 
+```bash
     function() {
        ...
     }
+```
 
 * Exceptions to that form include various usage and similar output functions.
 * Top of each file should have one line comment description followed by
