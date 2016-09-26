@@ -25,6 +25,9 @@ load_subsystem() {
     import "subsystem_pacman.sh"
   elif [ -n "$USE_BREW" ] && [ -n "$HAS_BREW" ]; then
     import "subsystem_brew.sh"
+  elif [ -n "$USE_APT" ] && [ -n "$HAS_APT" ]; then
+    # FIXME : Need to account for aptitude here
+    import "subsystem_apt.sh"
   else
     die "Unable to load any subsystem, is your OS/package-manager supported?"
   fi
