@@ -38,6 +38,7 @@ MANIFEST_LIB=(
 'dispatcher.sh'
 'subsystem_pacman.sh'
 'subsystem_brew.sh'
+'subsystem_apt.sh'
 )
 
 MANIFEST_BIN=(
