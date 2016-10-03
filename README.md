@@ -21,12 +21,12 @@ unified way.
 # What's supported
 
 For an idea of what's done (and what needs to be done), take a look at the
-[SUBSYS_MATRIX.md](Subsystem Matrix).
+[Subsystem Matrix](SUBSYS_MATRIX.md).
 
 # Contributing to Rose
 
 If you would like to contribute to Rose, please review the following
 documents:
 
-* [GOALS.md](Project goals)
-* [CODE_STYLE.md](Conding style and standards)
+* [Project goals](GOALS.md)
+* [Conding style and standards](CODE_STYLE.md)
