@@ -17,3 +17,16 @@ every one do things a little bit or a lot different?
 Rose aims to be a package manager unifier. It's a wrapper script that *should*
 let you work with a number of package managers behind the scenes in a single,
 unified way.
+
+# What's supported
+
+For an idea of what's done (and what needs to be done), take a look at the
+[SUBSYS_MATRIX.md](Subsystem Matrix).
+
+# Contributing to Rose
+
+If you would like to contribute to Rose, please review the following
+documents:
+
+* [GOALS.md](Project goals)
+* [CODE_STYLE.md](Conding style and standards)
