@@ -50,3 +50,10 @@ pm_show() {
     _apt "show $i"
   done
 }
+
+pm_search() {
+  for i in "${PARAMETERS[@]}"
+  do
+    _apt "search $i"
+  done
+}
