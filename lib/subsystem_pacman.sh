@@ -54,3 +54,7 @@ pm_show() {
 pm_search() {
   die "SEARCH NOT YET IMPLEMENTED FOR PACMAN!"
 }
+
+pm_install() {
+  die "INSTALL NOT YET IMPLEMENTED FOR PACMAN!"
+}

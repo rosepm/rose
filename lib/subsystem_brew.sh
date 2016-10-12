@@ -53,3 +53,10 @@ pm_search() {
     _brew "search $i"
   done
 }
+
+pm_install() {
+  for i in "${PARAMETERS[@]}"
+  do
+    _brew "install $i"
+  done
+}

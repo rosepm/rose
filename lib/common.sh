@@ -25,7 +25,7 @@ unset IS_LINUX IS_BSD IS_SLES IS_SLACK IS_BSD IS_DEB IS_ARCH IS_RHEL || true
 unset HAS_PAC HAS_APT HAS_APTITUDE HAS_DNF HAS_BREW IS_DAR || true
 
 # Command toggles
-unset CMD_HELP CMD_INIT CMD_SHOW CMD_SEARCH || true
+unset CMD_HELP CMD_INIT CMD_SHOW CMD_SEARCH CMD_INSTALL || true
 
 # Other toggles and settings
 unset VERBOSE CONF_FILE PM_CMD || true

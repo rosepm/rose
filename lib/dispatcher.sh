@@ -41,5 +41,7 @@ dispatcher() {
     pm_show
   elif [ -n "$CMD_SEARCH" ]; then
     pm_search
+  elif [ -n "$CMD_INSTALL" ]; then
+    pm_install
   fi
 }

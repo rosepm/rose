@@ -33,6 +33,8 @@ usage_full()
 
     show            Show information about an installed package
 
+    install         Install a package (or packages)
+
     help            Print this help, or, if a command is provided, print that
                     command's help.
 
@@ -80,6 +82,28 @@ usage_show()
 EOF
 }
 
+usage_install()
+{
+  cat <<EOF
+  Usage: $PROGNAME [OPTIONS] install PACKAGE(S)
+
+    Install a package or packages on the system.
+
+  OPTIONS:
+
+    -v              Be verbose
+    -y              Assume "yes" to all questions
+EOF
+}
+
+usage_search() {
+  cat <<EOF
+  Usage: $PROGNAME search PACKAGE(S)
+
+    Search for a package or packages.
+EOF
+}
+
 ############################
 # MAIN ENTRY POINT
 ############################
@@ -92,6 +116,16 @@ usage() {
 
   if [ -n "$CMD_SHOW" ]; then
     usage_show
+    _no_command=1
+  fi
+
+  if [ -n "$CMD_SEARCH" ]; then
+    usage_search
+    _no_command=1
+  fi
+
+  if [ -n "$CMD_INSTALL" ]; then
+    usage_install
     _no_command=1
   fi
 

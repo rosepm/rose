@@ -47,6 +47,11 @@ do
       PM_CMD=yes
       shift
       ;;
+    install)
+      CMD_INSTALL=yes
+      PM_CMD=yes
+      shift
+      ;;
     -v|--verbose)
       VERBOSE=yes
       shift

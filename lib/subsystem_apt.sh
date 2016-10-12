@@ -57,3 +57,7 @@ pm_search() {
     _apt "search $i"
   done
 }
+
+pm_install() {
+  die "INSTALL NOT YET IMPLEMENTED FOR PACMAN!"
+}
