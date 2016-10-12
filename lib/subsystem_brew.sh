@@ -46,3 +46,10 @@ pm_show() {
     _brew "$_c $i"
   done
 }
+
+pm_search() {
+  for i in "${PARAMETERS[@]}"
+  do
+    _brew "search $i"
+  done
+}

@@ -42,6 +42,11 @@ do
       PM_CMD=yes
       shift
       ;;
+    search)
+      CMD_SEARCH=yes
+      PM_CMD=yes
+      shift
+      ;;
     -v|--verbose)
       VERBOSE=yes
       shift

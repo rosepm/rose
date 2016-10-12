@@ -39,5 +39,7 @@ dispatcher() {
 
   if [ -n "$CMD_SHOW" ]; then
     pm_show
+  elif [ -n "$CMD_SEARCH" ]; then
+    pm_search
   fi
 }
