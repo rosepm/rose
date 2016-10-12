@@ -50,3 +50,7 @@ pm_show() {
     done
   fi
 }
+
+pm_search() {
+  die "SEARCH NOT YET IMPLEMENTED FOR PACMAN!"
+}
