@@ -52,7 +52,10 @@ pm_show() {
 }
 
 pm_search() {
-  die "SEARCH NOT YET IMPLEMENTED FOR PACMAN!"
+  for i in "${PARAMETERS[@]}"
+  do
+    _pacman "-Ss $i"
+  done
 }
 
 pm_install() {
