@@ -6,5 +6,5 @@
 Command | pacman | apt | aptitude | brew | dnf
 --------|--------|-----|----------|------|-----
 show    | :o:    | :o: | :x:      | :o:  | :x:
-search  | :x:    | :o: | :x:      | :o:  | :x:
+search  | :o:    | :o: | :x:      | :o:  | :x:
 install | :x:    | :x: | :x:      | :o:  | :x:
