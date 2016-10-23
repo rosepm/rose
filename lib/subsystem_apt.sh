@@ -59,5 +59,5 @@ pm_search() {
 }
 
 pm_install() {
-  die "INSTALL NOT YET IMPLEMENTED FOR PACMAN!"
+  _apt "install $PARAMETERS"
 }
