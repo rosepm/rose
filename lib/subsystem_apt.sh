@@ -59,5 +59,5 @@ pm_search() {
 }
 
 pm_install() {
-  echo "install ${PARAMETERS[@]}"
+  _apt "install ${PARAMETERS[@]}"
 }
