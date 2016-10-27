@@ -12,5 +12,6 @@ do
   cd $d
   docker build -t="${img}" .
   cd .. 
-  echo "+ ---------------------------------DONE: ${img}\n"
+  echo "+ ---------------------------------DONE: ${img}"
+  echo "..."
 done
